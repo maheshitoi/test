@@ -222,6 +222,12 @@
             });
         });
     });
+    document.addEventListener('DOMContentLoaded', function () {
+        const dobInput = document.getElementById('dob');
+        dobInput.addEventListener('focus', function () {
+            this.showPicker && this.showPicker();
+        });
+    });
 </script>
 
 
