@@ -29,7 +29,7 @@ class Database extends Config
         'hostname' => DB_HOST,
         'username' => DB_USERNAME,
         'password' => DB_PASSWORD,
-        'database' => 'iaoi_prod',
+        'database' => 'registration',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

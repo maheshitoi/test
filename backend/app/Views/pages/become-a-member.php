@@ -10,7 +10,7 @@
         <?php $validation = \Config\Services::validation(); ?>
         <form action="<?= BASEURL; ?>/member_req" method="post" id="memberForm">
             <div class="row member_box">
-            <div class="col-lg-6">
+                <div class="col-lg-6">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Name">
@@ -19,7 +19,7 @@
                         <label for="dob">Date of Birth</label>
                         <input type="date" id="dob" name="dob" class="form-control"><i class="fa fa-calendar-alt"></i>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="aadhar_no">Aadhar No.</label>
                         <input type="number" id="aadhar_no" name="aadhar_no" class="form-control" placeholder="Enter Your Aadhar No">
@@ -57,7 +57,7 @@
                         <label for="permanent_address">Permanent Address</label>
                         <input type="text" id="permanent_address" name="permanent_address" class="form-control" placeholder="Enter Your Permanent Address">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="current_address">Current Address (Working)</label>
                         <input type="text" id="current_address" name="current_address" class="form-control" placeholder="Enter Your Current Address">
@@ -77,12 +77,10 @@
                     </table>
                 </div>
                 <div class="form-group" style="text-align:center;margin:30px 0px">
-                    <button type="submit" onclick="submitForm()" class="th-btn">Submit</button>
+                    <button type="submit" onclick="submitForm(event)" class="th-btn">Submit</button>
                 </div>
             </div>
-    </div>
-    </div>
-    </form>
+        </form>
     </div>
 </section>
 
@@ -116,6 +114,74 @@
         cursor: pointer;
     }
 </style>
+<script>
+    function submitForm(event) {
+        event.preventDefault();
+
+        let isValid = true;
+        let firstInvalid = null;
+
+        const form = document.getElementById("memberForm");
+        const inputs = form.querySelectorAll("input, select, textarea");
+
+        inputs.forEach(input => {
+            if (input.value.trim() === "") {
+                isValid = false;
+
+                if (!firstInvalid) {
+                    firstInvalid = input;
+                }
+
+                input.style.borderColor = "#dd3636";
+                input.classList.add("placeholder-red");
+
+                if (!input.placeholder) {
+                    input.placeholder = "This field is required";
+                }
+            } else {
+                input.style.borderColor = "green";
+                input.classList.remove("placeholder-red");
+            }
+        });
+
+        if (!isValid && firstInvalid) {
+            firstInvalid.focus();
+        } else {
+            form.submit();
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById("memberForm");
+        const inputs = form.querySelectorAll("input, select, textarea");
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value.trim() !== "") {
+                    input.style.borderColor = "green";
+                    input.classList.remove("placeholder-red");
+                }
+            });
+
+            // For select specifically
+            input.addEventListener('change', () => {
+                if (input.value.trim() !== "") {
+                    input.style.borderColor = "green";
+                    input.classList.remove("placeholder-red");
+                }
+            });
+        });
+    });
+</script>
+
+
+<style>
+    /* Red placeholder text */
+    .placeholder-red::placeholder {
+        color: #dd3636 !important;
+    }
+</style>
+
 
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
