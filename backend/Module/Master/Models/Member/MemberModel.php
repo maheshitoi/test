@@ -18,7 +18,7 @@ class MemberModel extends Model
     protected $primaryKey = 'id';
     protected $returnType = 'App\Domain\Member\Member';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['member_id', 'first_name', 'last_name', 'email_id', 'address', 'country', 'state', 'city', 'pincode', 'field', 'reg_no', 'dob', 'college_name', 'mem_req_fk_id', 'approved_by', 'mobile_no', 'remarks', 'is_speaker', 'approved_by', 'profile_img','last_sent_mail_on'];
+    protected $allowedFields = ['mem_req_fk_id', 'member_id', 'name', 'father_name', 'email_id', 'mobile_no', 'permanent_address', 'present_address', 'current_office_address', 'last_office_address', 'aadhar_no', 'certification_no', 'dob', 'certification_doc', 'remarks', 'approved_by', 'profile_img', 'status'];
     protected $useTimestamps = true;
     protected $beforeInsert = ['beforeSave'];
     protected $beforeUpdate = ['beforeSave'];

@@ -7,6 +7,6 @@ use CodeIgniter\Entity;
 class Member_request extends Entity
 {
     protected $attributes = [
-        'first_name' => null, 'last_name' => null, 'email_id' => null, 'address' => null, 'country' => null, 'state' => null, 'city' => null, 'pincode' => null, 'field' => null, 'reg_no' => null, 'dob' => null, 'college_name' => null, 'profile_img' => null, 'status','mail_on',
+        'name' => null, 'father_name' => null, 'email_id' => null, 'mobile_no' => null, 'permanent_address' => null, 'present_address' => null, 'current_office_address' => null, 'last_office_address' => null, 'aadhar_no' => null, 'certification_no' => null, 'dob' => null, 'certification_doc' => null,'profile_img' => null,'mail_on',
     ];
 }
