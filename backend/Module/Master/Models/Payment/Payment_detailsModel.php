@@ -18,7 +18,7 @@ class Payment_detailsModel extends Model
     protected $primaryKey = 'id';
     protected $returnType = 'App\Domain\Payment\Payment_details';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['member_fk_id', 'event_fk_id', 'transaction_id', 'amount', 'payment_mode_fk_id', 'mem_req_fk_id', 'payment_status', 'plan_id', 'contact_details', 'remark', 'transaction_ref', 'transaction_date','document','razorpayment_id','razorpayorder_id'];
+    protected $allowedFields = ['member_fk_id', 'transaction_id', 'amount', 'mem_req_fk_id', 'payment_status', 'remark', 'payment_mode_fk_id', 'transaction_ref', 'transaction_date	', 'document', 'razorpayment_id', 'razorpayorder_id'];
     protected $useTimestamps = true;
     protected $beforeInsert = ['beforeSave'];
     protected $beforeUpdate = ['beforeSave'];
