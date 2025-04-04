@@ -79,15 +79,17 @@
                     </div>
 
                 </div>
-                <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4 payment_detail aligncenter">
-                    <table cellpadding="10" cellspacing="0">
-                        <tr>
-                            <td>Registration Amount</td>
-                            <td>:</td>
-                            <td>&#x20B9; 200</td>
-                        </tr>
-                    </table>
+                <div class="col-12 d-flex justify-content-center my-4">
+                    <div style="background: linear-gradient(135deg,rgb(167, 219, 215),rgb(165, 205, 203)); color: #000000; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 400px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                            <i class="fa fa-wallet" style="margin-right: 10px;"></i> ₹200
+                        </div>
+                        <div style="margin-top: 10px; font-size: 1rem;">
+                            <strong>Registration Amount</strong>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="form-group" style="text-align:center;margin:30px 0px">
                     <button type="submit" onclick="submitForm(event)" class="th-btn">Submit</button>
                 </div>
@@ -222,9 +224,9 @@
             });
         });
     });
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const dobInput = document.getElementById('dob');
-        dobInput.addEventListener('focus', function () {
+        dobInput.addEventListener('focus', function() {
             this.showPicker && this.showPicker();
         });
     });
@@ -241,5 +243,7 @@
 
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
