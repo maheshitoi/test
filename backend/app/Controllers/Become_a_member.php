@@ -57,35 +57,9 @@ class Become_a_member extends BaseController
     }
     public function member_req()
     {
-        $rules = [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'dob' => 'required',
-            'email_id' => [
-                'rules' => 'required|valid_email|is_unique[member_request.email_id]',
-                'errors' => [
-                    'is_unique' => 'The Email ID you entered already exists.',
-                ],
-            ],
-            'field' => 'required',
-            'reg_no' => 'required',
-            'college_name' => 'required',
-            'mobile_no' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'pincode' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'payment_mode' => 'required',
-        ];
-
-        $validation = \Config\Services::validation();
-
-        if (!$this->validate($rules)) {
-            $errors = $validation->getErrors();
-            return view('include/header') . view('pages/become-a-member', ['errors' => $errors]) . view('include/footer');
-        }
         $req = $this->request->getPost();
+        print_r($req);
+        return;
         $this->processOnlinePayment($req);
 
         return redirect()->to(BASEURL . 'become-a-member');
@@ -95,7 +69,7 @@ class Become_a_member extends BaseController
     protected function processOnlinePayment($req)
     {
         $res = $this->repository->insert(new Member_request($req));
-        $price = 5900;
+        $price = 200;
 
         $orderData = [
             'amount'          => $price * 100, // amount in paise

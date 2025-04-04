@@ -29,12 +29,17 @@
                         <input type="text" id="present_address" name="present_address" class="form-control" placeholder="Enter Your Present Address">
                     </div>
                     <div class="form-group">
-                        <label for="last_address">Last Address (if Retired)</label>
-                        <input type="text" id="last_address" name="last_address" class="form-control" placeholder="Enter Your Last Address">
+                        <label for="last_office_address">Last office Address (if Retired)</label>
+                        <input type="text" id="last_office_address" name="last_office_address" class="form-control" placeholder="Enter Your Last office Address">
                     </div>
                     <div class="form-group">
                         <label for="service_details">Service Details</label>
                         <input type="text" id="service_details" name="service_details" class="form-control" placeholder="Enter Your Service Details">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile_image">Upload Profile Image</label>
+                        <input type="file" id="profile_image" name="profile_image" class="form-control" accept="image/*" onchange="previewImage(event)">
+                        <div id="image_preview" style="margin-top: 10px;"></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -50,26 +55,29 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="college_name">What's App No</label>
-                        <input type="number" id="" name="whatsapp_no" class="form-control" placeholder="Enter Your What's App No">
+                        <label for="mobile_no">Mobile No</label>
+                        <input type="number" id="mobile_no" name="mobile_no" class="form-control" placeholder="Enter Your Mobile No">
                     </div>
                     <div class="form-group">
                         <label for="permanent_address">Permanent Address</label>
                         <input type="text" id="permanent_address" name="permanent_address" class="form-control" placeholder="Enter Your Permanent Address">
                     </div>
-<<<<<<< HEAD
-                    
-=======
 
->>>>>>> e8db0cc443214d0be0d9c83f2158101b6ae5721f
                     <div class="form-group">
-                        <label for="current_address">Current Address (Working)</label>
-                        <input type="text" id="current_address" name="current_address" class="form-control" placeholder="Enter Your Current Address">
+                        <label for="current_office_address">Current Office Address (Working)</label>
+                        <input type="text" id="current_office_address" name="current_office_address" class="form-control" placeholder="Enter Your Current Office Address">
                     </div>
                     <div class="form-group">
                         <label for="certification_no">Certification No</label>
                         <input type="text" id="certification_no" name="certification_no" class="form-control" placeholder="Enter Your Certification No">
                     </div>
+                    <div class="form-group">
+                        <label for="certification_doc">Certification Image</label>
+                        <input type="file" id="certification_doc" name="certification_doc" class="form-control" accept="image/*" onchange="previewImage(event)">
+                        <div id="image_preview" style="margin-top: 10px;"></div>
+                        <div id="image_error" class="text-danger" style="display: none; margin-top: 5px;">Please Upload Your Certification</div>
+                    </div>
+
                 </div>
                 <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4 payment_detail aligncenter">
                     <table cellpadding="10" cellspacing="0">
@@ -128,49 +136,87 @@
         const form = document.getElementById("memberForm");
         const inputs = form.querySelectorAll("input, select, textarea");
 
-        inputs.forEach(input => {
-            if (input.value.trim() === "") {
-                isValid = false;
+        const imageInput = document.getElementById("profile_image");
+        const imageError = document.getElementById("image_error");
 
-                if (!firstInvalid) {
-                    firstInvalid = input;
-                }
+        inputs.forEach(input => {
+            if ((input.type !== "file" && input.value.trim() === "") ||
+                (input.type === "file" && input.id === "profile_image" && input.files.length === 0)) {
+
+                isValid = false;
+                if (!firstInvalid) firstInvalid = input;
 
                 input.style.borderColor = "#dd3636";
                 input.classList.add("placeholder-red");
 
-                if (!input.placeholder) {
+                if (!input.placeholder && input.type !== "file") {
                     input.placeholder = "This field is required";
                 }
+
+                // Show image error only for #profile_image
+                if (input.id === "profile_image") {
+                    imageError.style.display = "block";
+                }
+
             } else {
-                input.style.borderColor = "green";
+                input.style.borderColor = "#3AAFA9";
+                input.style.backgroundColor = "#f3f7fb";
+
                 input.classList.remove("placeholder-red");
+
+                // Hide image error if image is selected
+                if (input.id === "profile_image") {
+                    imageError.style.display = "none";
+                }
             }
         });
 
         if (!isValid && firstInvalid) {
             firstInvalid.focus();
         } else {
-            form.submit();
+            form.submit(); // Submit when valid
         }
     }
 
+
+    // Image preview
+    function previewImage(event) {
+        const input = event.target;
+        const previewContainer = document.getElementById("image_preview");
+        previewContainer.innerHTML = ""; // Clear previous
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.maxWidth = "150px";
+                img.style.maxHeight = "150px";
+                img.style.borderRadius = "8px";
+                img.style.border = "1px solid #a4a4a4";
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Green border on typing/selecting
     window.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById("memberForm");
         const inputs = form.querySelectorAll("input, select, textarea");
 
         inputs.forEach(input => {
             input.addEventListener('input', () => {
-                if (input.value.trim() !== "") {
-                    input.style.borderColor = "green";
+                if (input.type !== "file" && input.value.trim() !== "") {
+                    input.style.borderColor = "#3AAFA9";
                     input.classList.remove("placeholder-red");
                 }
             });
 
-            // For select specifically
             input.addEventListener('change', () => {
-                if (input.value.trim() !== "") {
-                    input.style.borderColor = "green";
+                if ((input.type === "file" && input.files.length > 0) ||
+                    (input.type !== "file" && input.value.trim() !== "")) {
+                    input.style.borderColor = "#3AAFA9";
                     input.classList.remove("placeholder-red");
                 }
             });

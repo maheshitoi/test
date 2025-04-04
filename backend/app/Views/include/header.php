@@ -10,7 +10,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>IAOI | Home</title>
+    <title>Registration</title>
     <meta name="author" content="themeholy">
     <meta name="description" content="IAOI">
     <meta name="keywords" content="IAOI">
