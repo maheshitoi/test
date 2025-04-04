@@ -16,16 +16,31 @@
                         <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Name">
                     </div>
                     <div class="form-group">
-                        <label for="father_name">Father Name</label>
-                        <input type="text" id="father_name" name="father_name" class="form-control" placeholder="Enter Your Father Name">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" class="form-control"><i class="fa fa-calendar-alt"></i>
                     </div>
+                    
                     <div class="form-group">
                         <label for="aadhar_no">Aadhar No.</label>
                         <input type="number" id="aadhar_no" name="aadhar_no" class="form-control" placeholder="Enter Your Aadhar No">
                     </div>
                     <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" name="dob" class="form-control"><i class="fa fa-calendar-alt"></i>
+                        <label for="present_address">Present Address</label>
+                        <input type="text" id="present_address" name="present_address" class="form-control" placeholder="Enter Your Present Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_address">Last Address (if Retired)</label>
+                        <input type="text" id="last_address" name="last_address" class="form-control" placeholder="Enter Your Last Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="service_details">Service Details</label>
+                        <input type="text" id="service_details" name="service_details" class="form-control" placeholder="Enter Your Service Details">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="father_name">Father Name</label>
+                        <input type="text" id="father_name" name="father_name" class="form-control" placeholder="Enter Your Father Name">
                     </div>
                     <div class="form-group">
                         <label for="email_id">Email</label>
@@ -38,27 +53,14 @@
                         <label for="college_name">What's App No</label>
                         <input type="number" id="" name="whatsapp_no" class="form-control" placeholder="Enter Your What's App No">
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="last_address">Last Address (if Retired)</label>
-                        <input type="text" id="last_address" name="last_address" class="form-control" placeholder="Enter Your Last Address">
-                    </div>
-                    <div class="form-group">
-                        <label for="current_address">Current Address (Working)</label>
-                        <input type="text" id="current_address" name="current_address" class="form-control" placeholder="Enter Your Current Address">
-                    </div>
-                    <div class="form-group">
-                        <label for="present_address">Present Address</label>
-                        <input type="text" id="present_address" name="present_address" class="form-control" placeholder="Enter Your Present Address">
-                    </div>
                     <div class="form-group">
                         <label for="permanent_address">Permanent Address</label>
                         <input type="text" id="permanent_address" name="permanent_address" class="form-control" placeholder="Enter Your Permanent Address">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="service_details">Service Details</label>
-                        <input type="text" id="service_details" name="service_details" class="form-control" placeholder="Enter Your Service Details">
+                        <label for="current_address">Current Address (Working)</label>
+                        <input type="text" id="current_address" name="current_address" class="form-control" placeholder="Enter Your Current Address">
                     </div>
                     <div class="form-group">
                         <label for="certification_no">Certification No</label>
