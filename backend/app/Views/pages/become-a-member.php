@@ -48,6 +48,7 @@
                         <div id="email_error" class="text-danger" style="display: none;padding: 10px 0;">Please enter a valid email address.
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="college_name">What's App No</label>
                         <input type="number" id="" name="whatsapp_no" class="form-control" placeholder="Enter Your What's App No">
