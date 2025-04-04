@@ -1,0 +1,216 @@
+<style>
+   .caption {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: left;
+   }
+   .label{
+    font-weight : bold;
+   }
+   .sub_title {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: left;
+      
+   }
+   .sub_titl, strong{
+      border-bottom:3px solid black; width:100%;
+   }
+ td {
+    padding: 10px;
+    
+   
+  }
+   .title {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font-size: medium;
+   }
+
+   .sign {
+      padding-top: 30px;
+      padding-bottom: 100px;
+      text-align: left;
+      font-weight: bold;
+      text-align: center;
+   }
+   .sign-bot{
+      text-align: left;
+      font-weight: bold;
+      text-align: center;
+   }
+</style>
+<table border="0" cellpadding="1" cellspacing="2" width="100%">
+   <tbody>
+<tr>
+   <td rowspan="3" style="text-align: left;">
+   <img src="{profile_img}" alt="profile_img" width="100" height="100">
+   </td>
+</tr>
+<tr>
+<td></td>
+ <td  align="right" class="label">HomeName</td><td>: {homeName}</td>
+<td  align="right" class="label">Child Name</td><td>: {name}</td>
+</tr>
+<tr>
+<td></td>
+<td align="left" class="label">Child_id</td><td class="medium">: {child_id}</td>
+<td  align="right" class="label">Email ID </td><td class="medium">:  {email_id}</td>
+</tr>
+</tbody>
+</table>
+
+<table border="0" cellpadding="4" cellspacing="6" width="100%">
+   <tbody>
+<tr>
+   <td width="20%" class="label">Child Status </td>
+   <td class="medium">:  {child_statusName}</td>
+   <td width="20%" class="label">whatsApp No </td>
+   <td class="medium" style="width:30%">:  {whatsApp_no} </td>
+</tr>
+<tr>
+   <td class="label">Gender </td>
+   <td class="medium">:  {gender} </td>
+   <td class="label">Religion </td>
+   <td class="medium">:  {religionName} </td>
+</tr>
+<tr>
+   <td class="label">Community </td>
+   <td class="medium">: {communityName}</td>
+   <td class="label">Marital Status </td>
+   <td class="medium">:  {marital_statusName} </td>
+</tr>
+<tr>
+   <td class="label">last_modify_by </td>
+   <td class="medium">:  {last_modify_by} </td>
+   <td class="label">Created_At </td>
+   <td class="medium">:  {created_at}</td>
+</tr>
+<tr>
+   <td colspan="4" class="sub_title"><strong> Parents </strong></td>
+</tr>
+<parents>
+<tr>
+   <td class="label" style="width:20%">Parent Name</td>
+   <td class="medium" style="width:40%">:  {name}</td>
+   <td class="label">Occupation</td>
+   <td class="medium" style="width:30%">:  {occupation}</td>
+</tr>
+<tr>
+   <td class="label">Parent Type </td>
+   <td class="medium">:  {parent_type} </td>
+   <td class="label">Gender </td>
+   <td class="medium">:  {gender} </td>
+</tr>
+<tr>
+   <td class="label">Email ID</td>
+   <td class="medium">:  {email_id} </td>
+   <td class="label">Mobile No </td>
+   <td class="medium">:  {mobile_no} </td> 
+</tr>
+<tr>
+  <td class="label">whatsApp No </td>
+   <td class="medium">:  {whatsApp_no} </td> 
+   <td class="label">Alive Status </td>
+   <td class="medium">:  {alive_status} </td>
+</tr>
+</parents>
+<tr>
+   <td colspan="4" class="sub_title"><strong> Sibiling </strong></td>
+</tr>
+<sibiling>
+<tr>
+   <td class="label" style="width:20%"> Name</td>
+   <td class="medium" style="width:40%">:  {name}</td>
+   <td class="label">Date Of Birth </td>
+   <td class="medium" style="width:30%">:  {dob}</td>
+</tr>
+<tr>
+   <td class="label"> Status</td>
+   <td class="medium">:  {status}</td>
+   <td class="label">Gender  </td>
+   <td class="medium">:  {gender} </td>
+</tr>
+<tr>
+   <td class="label"> Mobile No</td>
+   <td class="medium">:  {mobile_no}</td>
+   <td class="label">whatsApp_no</td>
+   <td class="medium">:  {whatsApp_no} </td>
+</tr>
+</sibiling>
+<tr>
+   <td colspan="4" class="sub_title"><strong> Education </strong></td>
+</tr>
+<education>
+<tr>
+   <td class="label" style="width:20%">School/Institution Name</td>
+   <td class="medium" style="width:40%">:  {institution_name}</td>
+   <td class="label">Class/Course </td>
+   <td class="medium" style="width:30%">:  {course_name}</td>
+</tr>
+<tr>
+   <td class="label"> completed_date</td>
+   <td class="medium">:  {completed_date}</td>
+   <td class="label">Course Category </td>
+   <td class="medium">:  {edu_categoryName} </td>
+</tr>
+<tr>
+   <td class="label">Lang/Medium</td>
+   <td class="medium">:  {lang_mediumName}</td>
+   <td class="label">Percentage </td>
+   <td class="medium">:  {mark_percentage_groupName}</td>
+</tr>
+<tr>
+   <td class="label"> From Date </td>
+   <td class="medium">:  {from_date} </td>
+   <td class="label">To Date </td>
+   <td class="medium">:  {to_date}</td>
+</tr>
+<tr>
+   <td class="label">Course Status </td>
+   <td class="medium">:  {course_status} </td>
+   <td colspan="2"></td>
+</tr>
+</education>
+
+<tr>
+   <td colspan="4" class="sub_title"><strong> Physical </strong></td>
+</tr>
+<physical>
+<tr>
+   <td style="width:20%" class="label">height </td>
+   <td class="medium" style="width:40%">:  {height}</td>
+   <td class="label">weight </td>
+   <td class="medium" style="width:30%">:  {weight} </td>
+</tr>
+<tr>
+   <td class="label"> sickness </td>
+   <td class="medium">:  {sickness} </td>
+   <td class="label">health_cond </td>
+   <td class="medium">:  {health_cond} </td>
+</tr>
+</physical>
+<tr>
+   <td colspan="4" class="sub_title"><strong>Others</strong></td>
+</tr>
+<others>
+<tr>
+    <td class="label">Aadhar Doc</td>
+    <td class="medium">
+           <img src="{aadhar_document}" alt="aadhar_document" width="100" height="100">
+     </td>
+     <td class="label">Pan Document</td><td class="medium">
+         <img src="{pan_document}"alt="pan_document" width="100" height="100">
+     </td>
+ </tr>
+ <tr>
+    <td class="label">Bank Document</td><td class="medium">
+         <img src="{bank_document}" alt="bank_document" width="100" height="100">
+     </td>
+     <td class="label">Birth Document</td><td class="medium">
+         <img src="{birth_document_path}" alt="birth_document" width="100" height="100">
+     </td>
+ </tr>
+</others>
+</tbody>
+</table>

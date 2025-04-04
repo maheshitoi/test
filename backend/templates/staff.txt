@@ -1,0 +1,486 @@
+<style>
+   .caption {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: left;
+   }
+   .label{
+    font-weight : bold;
+   }
+   .sub_title {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: left;
+      
+   }
+   .sub_titl, strong{
+      border-bottom:3px solid black; width:100%;
+   }
+
+   .title {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font-size: medium;
+   }
+
+   .sign {
+      padding-top: 30px;
+      padding-bottom: 100px;
+      text-align: left;
+      font-weight: bold;
+      text-align: center;
+   }
+   .sign-bot{
+      text-align: left;
+      font-weight: bold;
+      text-align: center;
+   }
+</style>
+<table border="0" cellpadding="1" cellspacing="2" width="100%">
+   <tbody>
+<tr>
+   <td rowspan="3" style="text-align: right;"><img src="{profile_img}" alt="" width="100" height="100"> 
+   </td>
+  <td></td><td></td>
+</tr>
+<tr>
+<td></td>
+ <td  align="right" class="label">Name</td><td class="medium">:   {fullName}</td>
+<td  align="right" class="label">Emp ID</td><td class="medium">: {staff_emp_id}</td>
+</tr>
+<tr>
+<td></td>
+<td align="right" class="label">Designation</td><td class="medium">: {deName}</td>
+<td  align="right" class="label">Email ID </td><td class="medium">:  {email_id}</td>
+    
+</tr>
+</tbody>
+</table>
+
+<table border="0" cellpadding="4" cellspacing="6" width="100%">
+   <tbody>
+<tr>
+   <td width="20%" class="label">Name in Certificate </td>
+   <td class="medium">:  {name_cert}</td>
+   <td width="20%" class="label">Father's Name </td>
+   <td class="medium" style="width:30%">:  {father_name} </td>
+</tr>
+<tr>
+   <td class="label">Gender </td>
+   <td class="medium">:  {genderName} </td>
+   <td class="label">Date of Birth </td>
+   <td class="medium">:  {dob} </td>
+</tr>
+<tr>
+   <td class="label">Age </td>
+   <td class="medium">: {age}</td>
+   <td class="label">Marital Status </td>
+   <td class="medium">:  {marital_statusName} </td>
+</tr>
+
+<tr>
+   <td class="label">Date Of Marriage </td>
+   <td class="medium">:  {do_marraige} </td>
+   <td class="label">Date of Baptism </td>
+   <td class="medium">:  {do_bap}</td>
+</tr>
+<tr>
+   <td class="label" >Date of Salvation
+   </td>
+   <td class="medium">:  {do_salvation} </td>
+   <td class="label">Date of Joining </td>
+   <td class="medium">:  {do_join}</td>
+</tr>
+<tr>
+   <td class="label">Years Of Experience </td>
+   <td class="medium">: {year_of_exp}</td>
+   <td class="label">Cross Ref No </td>
+   <td class="medium">:  {staff_cross_id}</td>
+</tr>
+<tr>
+   <td class="label">Is Cross Culture </td>
+   <td class="medium">: {is_cross_cultureName}</td>
+   <td class="label">Origin State</td>
+   <td class="medium">:  {stateName}</td>
+</tr>
+<tr>
+   <td class="label">Native Distance</td>
+   <td class="medium">:  {distance_from_km}</td>
+   <td class="label">Mobile No</td>
+   <td class="medium">:  {mobile_no}</td>
+</tr>
+<tr>
+   <td class="label">Alt Mobile </td>
+   <td class="medium">:  {alt_mobile_no}</td>
+   <td class="label">Spouse In GEMS </td>
+   <td>:  {spouceInGems}</td>
+</tr>
+<tr>
+   <td class="label">Spouse Name </td>
+   <td class="medium">: {spouceName}</td>
+   <td class="label">Spouse Emp Id </td>
+   <td class="medium">: {spouce_emp_id}</td>
+</tr>
+<tr>
+   <td colspan="4" class="sub_title"><strong> Office Info </strong></td>
+</tr>
+<tr>
+   <td class="label">Region</td>
+   <td class="medium">:  {regionName}</td>
+   <td class="label">Zone</td>
+   <td>:  {zoneName}</td>
+</tr>
+<tr>
+   <td class="label">Field</td>
+   <td class="medium">:  {fieldName}</td>
+   <td class="label">Church</td>
+   <td>:  {church_name}</td>
+</tr>
+
+<tr>
+   <td class="label">MS Office</td>
+   <td class="medium">:  {adName}</td>
+   <td class="label">Department</td>
+   <td>:  {dName}</td>
+</tr>
+
+<tr>
+   <td class="label">Branch </td>
+   <td>:  {branchName}</td>
+   <td class="label">Designation</td>
+   <td class="medium">:  {deName}</td>
+</tr>
+<tr>
+   <td class="label">Establishment</td>
+   <td>:  {trustName}</td>
+   <td class="label">Home/Project</td>
+   <td class="medium">:  {homeName}</td>
+</tr>
+ <tr>
+   <td class="label">EPF(UAN)</td>
+   <td>:  {epf_num}</td>
+   <td class="label">ESI</td>
+   <td class="medium">:  {esi_num}</td>
+</tr>
+ <tr>
+   <td class="label">Status</td>
+   <td>:  {staff_statusName}</td>
+   <td class="label">Stayed on Sikaria campus</td>
+   <td class="medium">: {stay_on_sikaria_campusName} </td>
+</tr>
+<active_position_title>
+<tr>
+   <td colspan="4" class="sub_title"><strong> Active Position </strong></td>
+</tr>
+</active_position_title>
+<active_position>
+<tr>
+   <td class="label" style="width:20%">Region Name </td>
+   <td class="medium" style="width:40%">  :{regionName}</td>
+   <td class="label"> Zone Name </td>
+   <td class="medium" style="width:30%">:  {zoneName} </td>
+</tr>
+<tr>
+   <td class="label">Field Name</td>
+   <td class="medium">:  {fieldName} </td>
+   <td class="label">Church Name </td>
+   <td class="medium">:  {church_name} </td>
+</tr>
+<tr>
+   <td class="label">MS Name</td>
+   <td class="medium">:  {adName}</td>
+   <td class="label">Department Name</td>
+   <td class="medium">:  {dName}</td>
+</tr>
+<tr>
+   <td class="label">Branch Name </td>
+   <td class="medium">:  {branchName} </td>
+   <td class="label">Designation Name</td>
+   <td class="medium">:  {deName}</td>
+</tr>
+<tr>
+   <td class="label">Establishment Name</td>
+   <td class="medium">:  {trustName}</td>
+   <td class="label">Home/projects</td>
+   <td class="medium">:  {homeName}</td>
+</tr>
+<tr>
+   <td class="label">From Date </td>
+   <td class="medium">:  {from_date}</td>
+   <td class="label">To Date</td>
+   <td class="medium">:  {to_date}</td>
+</tr>
+<tr>
+   <td class="label">Remarks</td>
+   <td class="medium">:  {remarks}</td>
+   <td colspan="2"></td>
+</tr>
+</active_position>
+
+<tr>
+   <td colspan="4" class="sub_title"><strong> Education </strong></td>
+</tr>
+<education>
+<tr>
+   <td class="label" style="width:20%">School/Institution Name</td>
+   <td class="medium" style="width:40%">:  {institution_name}</td>
+   <td class="label">Class/Course </td>
+   <td class="medium" style="width:30%">:  {course_name}</td>
+</tr>
+<tr>
+   <td class="label"> Branch / Division</td>
+   <td class="medium">:  {branch}</td>
+   <td class="label">Course Category </td>
+   <td class="medium">:  {edu_categoryName} </td>
+</tr>
+<tr>
+   <td class="label">Lang/Medium</td>
+   <td class="medium">:  {lang_mediumName}</td>
+   <td class="label">Percentage </td>
+   <td class="medium">:  {mark_percentage_groupName}</td>
+</tr>
+<tr>
+   <td class="label"> From Date </td>
+   <td class="medium">:  {from_date} </td>
+   <td class="label">To Date </td>
+   <td class="medium">:  {to_date}</td>
+</tr>
+<tr>
+   <td class="label">Course Status </td>
+   <td class="medium">:  {edustatusName} </td>
+   <td colspan="2"></td>
+</tr>
+</education>
+
+<tr>
+   <td colspan="4" class="sub_title"><strong> Training </strong></td>
+</tr>
+<training>
+<tr>
+   <td style="width:20%" class="label">Training Name </td>
+   <td class="medium" style="width:40%">:  {training_name}</td>
+   <td class="label">Description </td>
+   <td class="medium" style="width:30%">:  {description} </td>
+</tr>
+<tr>
+   <td class="label"> From Date </td>
+   <td class="medium">:  {from_date} </td>
+   <td class="label">To Date </td>
+   <td class="medium">:  {to_date} </td>
+</tr>
+
+</training>
+<tr><td colspan="4" class="sub_title"><strong>Experience </strong></td>
+</tr>
+<experience>
+<tr>
+<td class="label">Type</td>
+<td>:{typeName}</td>
+<td colspan="2"></td>
+<tr>
+   <td class="label" style="width:20%">Institution Name </td>
+   <td class="medium" style="width:40%">:  {institution_name} </td>
+   <td class="label">Designation </td>
+   <td class="medium" style="width:30%">:  {designation} </td>
+</tr>
+<tr>
+   <td class="label"> From Date </td>
+   <td class="medium">:  {from_date} </td>
+   <td class="label"> To Date </td>
+   <td class="medium">:  {to_date} </td>
+</tr>
+<tr>
+   <td class="label"> Place </td>
+   <td class="medium">:  {place} </td>
+   <td class="label">Remarks </td>
+   <td class="medium">:  {remarks} </td>
+</tr> 
+
+</experience>
+<tr><td colspan="4" class="sub_title"><strong>Child Details</strong></td>
+</tr>
+<child>
+<tr>
+<td class="label">Type</td>
+<td>:{homeName}</td>
+<td colspan="2"></td>
+<tr>
+   <td class="label" style="width:20%">Child Name </td>
+   <td class="medium" style="width:40%">:  {name} </td>
+   <td class="label">Child ID </td>
+   <td class="medium" style="width:30%">:  {child_id} </td>
+</tr>
+<tr>
+   <td class="label"> Child Status </td>
+   <td class="medium">:  {child_statusName} </td>
+   <td class="label"> Gender</td>
+   <td class="medium">:  {genderName} </td>
+</tr>
+<tr>
+   <td class="label"> Marital Status </td>
+   <td class="medium">:  {marital_statusName} </td>
+   <td class="label">DOB </td>
+   <td class="medium">:  {dob} </td>
+</tr> 
+
+</child>
+
+<tr>
+   <td colspan="4" class="sub_title"><strong>GEMS Experience Details</strong></td>
+</tr>
+<expGems>
+<tr>
+   <td class="label" style="width:20%">Region Name </td>
+   <td class="medium" style="width:40%">:  {regionName}</td>
+   <td class="label">Zone Name </td>
+   <td class="medium" style="width:30%">:  {zoneName} </td>
+</tr>
+<tr>
+   <td class="label">Field Name</td>
+   <td class="medium">:  {fieldName} </td>
+   <td class="label">Church Name </td>
+   <td class="medium">:  {church_name} </td>
+</tr>
+<tr>
+   <td class="label">MS Name</td>
+   <td class="medium">:  {adName}</td>
+   <td class="label">Department Name</td>
+   <td class="medium">:  {dName}</td>
+</tr>
+<tr>
+   <td class="label">Branch Name </td>
+   <td class="medium">:  {branchName} </td>
+   <td class="label">Designation Name</td>
+   <td class="medium">:  {deName}</td>
+</tr>
+<tr>
+   <td class="label">Establishment Name</td>
+   <td class="medium">:  {trustName}</td>
+   <td class="label">Home/projects</td>
+   <td class="medium">:  {homeName}</td>
+</tr>
+<tr>
+   <td class="label">From Date </td>
+   <td class="medium">:  {from_date}</td>
+   <td class="label">
+      To Date</td>
+   <td class="medium">:  {to_date}</td>
+</tr>
+<tr>
+   <td class="label">Remarks</td>
+   <td class="medium">:  {remarks}</td>
+   <td colspan="2"></td>
+</tr>
+</expGems>
+<tr>
+   <td colspan="4" class="sub_title"><strong>Bank Details</strong></td>
+</tr>
+<others>
+<tr>
+   <td class="label"> Bank Name</td>
+   <td class="medium">:  {bank_name} </td>
+   <td class="label">Branch Name </td>
+   <td class="medium">:  {branch_name} </td>
+</tr>
+<tr>
+   <td class="label"> Account Number</td>
+   <td class="medium">:  {account_number} </td>
+   <td class="label">Account Name </td>
+   <td class="medium">:  {account_name} </td>
+</tr>
+<tr>
+   <td class="label"> IFSC Code </td>
+   <td class="medium">:  {ifc_code} </td>
+   <td class="label">UPI</td>
+   <td class="medium">:  {upi} </td>
+</tr>
+<tr>
+   <td style="width:20%" class="label">Blood Group </td>
+   <td class="medium" style="width:40%">:  {blood_groupName} </td>
+   <td class="label">Do You Have Any Chronic Illness ?</td>
+   <td class="medium" style="width:30%">:  {chronic_statusName} </td>
+</tr>
+<tr>
+   <td class="label">Specify</td>
+   <td class="medium">:  {chronical}</td>
+   <td class="label">Dedication Status</td>
+   <td class="medium">:  {dedication_statusName} </td>
+</tr>
+<tr>
+   <td class="label">Description</td>
+   <td class="medium">:  {dedication_remarks}</td>
+   <td class="label">Dedication Date</td>
+   <td class="medium">:  {dedication_date}</td>
+</tr>
+
+<tr>
+   <td colspan="4" class="sub_title"> <strong> Medical Details</strong></td>
+</tr>
+<tr>
+<td class="label"> GESHA ID</td>
+<td class="medium">:  {gsha}</td>
+<td class="label">MUT ID </td>
+<td class="medium">:  {mut}</td>
+</tr>
+<tr>
+   <td  colspan="4" class="sub_title"> <strong>Testimony</strong></td>
+</tr>
+<tr>
+   <td  colspan="4">{testimony}</td>
+</tr>
+<tr>
+   <td colspan="4" class="sub_title"><strong>Identity Details</strong></td>
+</tr>
+<tr>
+   <td class="label"> Aadhaar Number</td>
+   <td class="medium">:  {aadhar}</td>
+   <td class="label">Pan Number </td>
+   <td class="medium">:  {pan}</td>
+</tr>
+
+    <tr>
+     <td class="label">Aadhar Doc</td>
+     <td class="medium">
+          <img src="{aadhar_document}" width="150px" height="150px">
+      </td>
+      <td class="label">Pan Document</td><td class="medium">
+          <img src="{pan_document}" width="150px" height="150px">
+      </td>
+  </tr>
+  <tr>
+     <td class="label">Bank Document</td><td class="medium">
+          <img src="{bank_document}" alt="" width="150px" height="150px">
+      </td>
+      <td class="label">Others Doc</td><td class="medium">
+          <img src="{others_document}" alt="" width="150px" height="150px">
+      </td>
+  </tr>
+
+<tr>
+   <td class="sub_title">
+   <p align="justify"><strong> Declaration :&nbsp;</strong></p>
+   </td>
+   <td colspan="3">
+   <br>
+   <p >
+      I hereby declare that the information furnished above is true, complete and correct to the best of my knowledge and belief. </p>
+   </td>
+</tr>
+<tr>
+   <td class="sign">Date  :</td>
+   <td colspan="2" class="sign"></td>
+   <td class="sign">Staff Signature  :</td>
+</tr>
+<tr>
+   <td align="left" colspan="2" class="sign-bot">HOD/ZS/RS/MS(Signature)</td>
+  
+   <td align="right" colspan="2" class="sign-bot">HR Dept(Signature) </td>
+</tr>
+<tr>
+   <td align="left" class="sign-bot">Name  :</td>
+   <td colspan="2" class="sign-bot" >  </td>
+   <td  class="sign-bot">Name  :</td>
+</tr>
+</others>
+</tbody>
+</table>

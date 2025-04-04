@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>IAOI</title>
+</head>
+
+<body>
+   <div class="a4-box">
+      <div class="background_image">
+         <section>
+            <table style="width:100%;border-collapse:collapse;">
+               <tr>
+                  <td style="width: 50%; vertical-align: top;">
+                     <img class="logo" src="https://iaoi.in/uploads/logo.png" style="width: 100px;">
+                  </td>
+                  <td style="width: 50%; text-align: right;">
+                     <div class="invoice"><b>INVOICE</b></div>
+                  </td>
+               </tr>
+            </table>
+         </section>
+
+         <section>
+            <table style="width: 100%; border-collapse: collapse;">
+               <tr>
+                  <td style="width: 50%; vertical-align: top;">
+                     <div class="paragraph" style="padding-top: 5px;">{first_name},</div>
+                     <div class="paragraph">{address}</div>
+                     <div class="paragraph">{country}</div>
+                     <div class="paragraph">{state},</div>
+                     <div class="paragraph">{city}, {pincode}</div>
+                  </td>
+                  <td style="width: 50%; text-align: right; vertical-align: top;">
+                     <div class="title">INVOICE NO: <span class="paragraph">{transaction_id}</span></div>
+                     <div class="title">Date: <span class="paragraph">{payment_date}</span></div>
+                  </td>
+               </tr>
+            </table>
+         </section>
+         <hr style="height: 3px; background-color: black; border: none;">
+         <section>
+            <table class="invoice_table"
+               style="width:100%;border-collapse:collapse;text-align:center;margin-top: 15px;">
+               <thead>
+                  <tr style="border-top:2px solid #000;">
+                     <th class="title" style="width: 60%; text-align: start;">Item</th>
+                     <th class="title">Unit Price</th>
+                     <th class="title">Total</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr style="border-top:2px solid #000;">
+                     <td class="paragraph" style="text-align: start;">Membership</td>
+                     <td class="paragraph">5000</td>
+                     <td class="paragraph">5000</td>
+                  </tr>
+                  <tr style="border-top:2px solid #000;">
+                     <td></td>
+                     <td class="title">GST (18%)</td>
+                     <td class="paragraph">900</td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td class="title" style="font-size: 25px; border-top:2px solid #000;">Total</td>
+                     <td class="title" style="font-size: 25px; border-top:2px solid #000;">5900</td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+         <hr style="height: 3px; background-color: black; border: none;">
+         <p style="text-align:center;"><u>Terms & Conditions</u></p>
+         <p>Once the membership payment has been made, it is <span class="title"> non-refundable.</span>
+            By completing the payment, you agree that the payment is final and cannot be reclaimed.
+            This policy applies to all membership tiers and types.
+            We encourage you to review your membership benefits carefully before making any payments.
+            Has a Maximum Number of Days in Which To Pay and Is Sometimes Offered a Discount if Paid Before the Due
+            Date.
+         </p>
+         <section>
+            <div class="paragraph" style="font-size: 25px;text-align: center;">Thank You!</div>
+         </section>
+      </div>
+   </div>
+</body>
+
+</html>
+
+<style>
+   .background_image {
+      position: relative;
+   }
+
+   .background_image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      background-image: url('https://iaoi.in/uploads/logo.png');
+      opacity: 0.08;
+      z-index: -1;
+   }
+
+   section {
+      padding: 25px 0;
+   }
+
+   .logo {
+      width: 25%;
+   }
+
+   .invoice {
+      font-family: 'Roxborough CF', serif;
+      font-size: 70px;
+      text-align: right;
+   }
+
+   .title {
+      line-height: 25px;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: sans-serif;
+      color: black;
+   }
+
+   .paragraph {
+      line-height: 25px;
+      font-weight: 400;
+      font-size: 16px;
+      font-family: sans-serif;
+      color: rgb(41, 40, 40);
+   }
+
+   .invoice_table th {
+      padding: 25px;
+   }
+
+   .invoice_table td {
+      padding: 15px;
+   }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roxborough+CF&display=swap" rel="stylesheet">

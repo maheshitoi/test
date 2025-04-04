@@ -1,0 +1,118 @@
+<div><p style="text-align: center;font-size: 10px;">{bible_wordsName}</p></div>
+<table class="no-bottom-border" border="0" width="100%" cellpadding="4" cellspacing="4" style="background-color: #cee0f1;">
+    <tr style="text-align: center;">
+        <td rowspan="3" style="width:25%">
+          <img src="{logo_img}" style="max-width: 75px; max-height=25px;"></td>
+        <td  style="text-align: center;"><strong>{trustName}</strong></td>
+          <td style="width:25%"></td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="1">{address} - {pincode} </td>
+    </tr>
+    </table>
+    <table class="no-bottom-border" width="100%" cellpadding="4" cellspacing="4"  style="background-color: #cee0f1;">
+    <tr>
+        <td style="text-align: center;"><strong>Payslip For {monthYear}</strong></td>
+    </tr>
+</table>
+<table border="0" width="100%" cellpadding="4" cellspacing="4">
+    <tbody>
+    <style>
+      .no-bottom-border {
+  border-bottom: none;
+}
+        table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+            .end_text {
+                text-align: end;
+            }
+            .right-border
+            {
+                border-right: 1px solid black;
+                padding :1px;
+            }
+            .right-align{
+                text-align: right;
+            }
+      td { 
+            padding: 1px; 
+        }
+            .top-border
+            {
+                border-top: 1px solid black;
+                padding :1px;
+            }
+</style>
+        <tr>
+            <td style="width:20%"><strong>Employee Name</strong></td>
+            <td style="width:2%">:</td>
+            <td class="right-border">{name}</td>
+            <td style="width:20%"><strong>Designation</strong></td>
+            <td style="width:2%">:</td>
+            <td>{deName}</td>
+        </tr>
+        <tr>
+            <td><strong>Employee ID</strong></td>
+            <td>:</td>
+            <td class="right-border">{staff_emp_id}</td>
+            <td><strong>CR ID</strong></td>
+            <td>:</td>
+            <td>{staff_cross_id}</td>
+        </tr>
+        <tr>
+            <td><strong>Department :</strong></td>
+            <td>:</td>
+            <td class="right-border">{dName}</td>
+            <td><strong>Date of Joining</strong></td>
+            <td>:</td>
+            <td>{do_join}</td>
+        </tr>
+        <tr>
+            <td><strong>Field</strong></td>
+            <td>:</td>
+            <td class="right-border">{fieldName}</td>
+            <td><strong>Total Present | Absent</strong></td>
+            <td>:</td>
+            <td>{no_of_days_present} | {total_leave} </td>
+        </tr>
+        <tr>
+            <td><strong>Bank A/c No & IFSC</strong></td>
+            <td>:</td>
+            <td class="right-border">{account_number} & {ifc_code}</td>
+            <td><strong>Region :</strong></td>
+            <td>:</td>
+            <td>{regionName}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="top-border"><strong>Earnings</strong></td>
+            <td class="right-align top-border right-border">Amount(Rs.)</td>
+            <td colspan="2" class="top-border"><strong>Deductions</strong></td>
+           <td class="right-align top-border">Amount(Rs.)</td>
+        </tr>
+        {payHead}
+         <tr>
+            <td colspan="2" class="top-border"><strong>Gross Earnings(A)</strong></td>
+            <td class="right-align right-border top-border"><strong>{total_earning}</strong></td>
+            <td colspan="2" class="top-border"><strong>Total Deductions(B)</strong></td>
+            <td class="right-align top-border"><strong>{total_deduction}</strong></td>
+        </tr>
+      
+        <tr>
+            <td colspan="2"><strong>Net Pay(A-B)</strong></td>
+            <td class="right-align right-border"><strong>{net_pay}</strong></td>
+            <td colspan="3"></td>
+        </tr>
+    </tbody>
+</table>
+<div><p style="text-left: center;font-size: 10px;"><b>Remarks:</b>  {remarks}</p></div>
+<div>
+        <p style="text-align: center;font-size: 12px;"><strong>Statutory Payment Details</strong></p>
+    </div>
+
+<table border="1" width="100%" cellpadding="4" cellspacing="4" class="line_table">
+        {statutoryHead}
+</table>
+<div><p style="text-align: center;font-size: 10px;">This is a Computer Generated Slip and does not require signature</p></div>

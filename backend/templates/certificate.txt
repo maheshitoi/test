@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A4 Landscape with Transparent Background</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .a4-landscape {
+      width: 100%; /* A4 width in landscape */
+      height: 100%; /* A4 height */
+      position: relative;
+      background: url('https://iaoi.in/uploads/certificate.jpg') no-repeat center center;
+      background-size: cover;
+      background-color: rgba(255, 255, 255, 1); /* Full transparency */
+    }
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="a4-landscape">
+    <div class="content">
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+     <h3 style="text-align: center;">{name}</h3>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<style>
+                table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                }
+                .center_text{
+                    text-align: center;
+                }
+                </style>
+        <div>
+        <caption><strong>Payroll Report</strong></caption>
+        </div>
+        <div>
+        
+            <caption><strong>{monthYear}</strong></caption>
+        
+        </div>
+
+<table border="0" width="100%" cellpadding="4" cellspacing="4">
+<thead>
+<tr>
+            <th class="center_text">Name</th>
+            <th class="center_text">Head</th>
+            <th class="center_text">Old Value</th>
+            <th class="center_text"><strong>New Value</strong></th>
+            <th class="center_text"><strong>Created by</strong></th>
+            <th class="center_text"><strong>Created On</strong></th>
+</tr>
+</thead>
+    <tbody>
+        {logTable}
+    </tbody>
+</table>

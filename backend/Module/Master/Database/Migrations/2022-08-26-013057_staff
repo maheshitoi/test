@@ -1,0 +1,32 @@
+<?php
+  
+namespace App\Database\Migrations;  
+use CodeIgniter\Database\Migration;
+
+class AddOtp extends Migration
+{
+    public function up()
+    {
+        $this->forge->addField([
+            'lat' => [
+                'type' => 'DECIMAL',
+                'constraint' => '2,5',
+                'null' => true,
+                'default' =>null
+            ],
+            'lat' => [
+                'type' => 'DECIMAL',
+                'constraint' => '2,5',
+                'null' => true,
+                'default' =>null
+            ],
+        ]);
+        //$this->forge->dropTable('otp_verification',true);
+        $this->forge->createTable('otp_verification',true);
+    }
+
+    public function down()
+    {
+        $this->forge->dropTable('otp_verification',true);
+    }
+}
