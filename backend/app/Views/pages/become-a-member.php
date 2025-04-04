@@ -38,8 +38,9 @@
                     </div>
                     <div class="form-group">
                         <label for="profile_image">Upload Profile Image</label>
-                        <input type="file" id="profile_image" name="profile_image" class="form-control" accept="image/*" onchange="previewImage(event)">
-                        <div id="image_preview" style="margin-top: 10px;"></div>
+                        <input type="file" id="profile_image" name="profile_image" class="form-control" accept="image/*" onchange="previewImage(event, 'profile_preview')">
+                        <div id="profile_preview" style="margin-top: 10px;"></div>
+                        <div id="image_error" class="text-danger" style="display: none; margin-top: 5px;">Please Upload Your Certification</div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -73,9 +74,8 @@
                     </div>
                     <div class="form-group">
                         <label for="certification_doc">Certification Image</label>
-                        <input type="file" id="certification_doc" name="certification_doc" class="form-control" accept="image/*" onchange="previewImage(event)">
-                        <div id="image_preview" style="margin-top: 10px;"></div>
-                        <div id="image_error" class="text-danger" style="display: none; margin-top: 5px;">Please Upload Your Certification</div>
+                        <input type="file" id="certification_doc" name="certification_doc" class="form-control" accept="image/*" onchange="previewImage(event, 'cert_preview')">
+                        <div id="cert_preview" style="margin-top: 10px;"></div>
                     </div>
 
                 </div>
@@ -155,7 +155,6 @@
                     input.placeholder = "This field is required";
                 }
 
-                // Show image error only for #profile_image
                 if (input.id === "profile_image") {
                     imageError.style.display = "block";
                 }
@@ -166,7 +165,6 @@
 
                 input.classList.remove("placeholder-red");
 
-                // Hide image error if image is selected
                 if (input.id === "profile_image") {
                     imageError.style.display = "none";
                 }
@@ -180,14 +178,15 @@
         }
     }
 
+    // Image preview for multiple inputs
+    function previewImage(event, previewId) {
+        const previewContainer = document.getElementById(previewId);
+        previewContainer.innerHTML = ""; // Clear previous preview
 
-    // Image preview
-    function previewImage(event) {
         const input = event.target;
-        const previewContainer = document.getElementById("image_preview");
-        previewContainer.innerHTML = ""; // Clear previous
+        const file = input.files[0];
 
-        if (input.files && input.files[0]) {
+        if (file && file.type.startsWith("image/")) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const img = document.createElement("img");
@@ -198,11 +197,13 @@
                 img.style.border = "1px solid #a4a4a4";
                 previewContainer.appendChild(img);
             };
-            reader.readAsDataURL(input.files[0]);
+            reader.readAsDataURL(file);
+        } else {
+            previewContainer.innerHTML = "<p class='text-danger'>Invalid image file</p>";
         }
     }
 
-    // Green border on typing/selecting
+    // Green border on input/change
     window.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById("memberForm");
         const inputs = form.querySelectorAll("input, select, textarea");
@@ -224,13 +225,16 @@
             });
         });
     });
+
+    // Show date picker on focus
     document.addEventListener('DOMContentLoaded', function() {
         const dobInput = document.getElementById('dob');
-        dobInput.addEventListener('focus', function() {
+        dobInput && dobInput.addEventListener('focus', function() {
             this.showPicker && this.showPicker();
         });
     });
 </script>
+
 
 
 <style>
