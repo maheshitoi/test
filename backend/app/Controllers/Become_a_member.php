@@ -55,19 +55,11 @@ class Become_a_member extends BaseController
             . view('pages/become-a-member', $data)
             . view('include/footer');
     }
+    
     public function member_req()
     {
+    
         $req = $this->request->getPost();
-        print_r($req);
-        return;
-        $this->processOnlinePayment($req);
-
-        return redirect()->to(BASEURL . 'become-a-member');
-    }
-
-
-    protected function processOnlinePayment($req)
-    {
         $res = $this->repository->insert(new Member_request($req));
         $price = 200;
 
@@ -90,7 +82,7 @@ class Become_a_member extends BaseController
             "description" => "dummy",
             "image"       => "https://s29.postimg.org/r6dj1g85z/daft_punk.jpg",
             "prefill"     => [
-                "name"  => $req['first_name'] . ' ' . $req['last_name'],
+                "name"  => $req['name'],
                 "email" => $req['email_id'],
                 "mobile_no" => $req['mobile_no'],
             ],
@@ -107,19 +99,25 @@ class Become_a_member extends BaseController
         $json = json_encode($data);
 
         $payment = [
-            'mem_req_fk_id'    => $res,
-            'payment_mode_fk_id' => $req['payment_mode'],
+            // 'mem_req_fk_id'    => $res,
+            'payment_mode_fk_id' => 1,
             'amount'             => $price,
             'transaction_id'   => generateKey('PAYMENT'),
             'razorpayorder_id' => $razorpayOrderId
         ];
+        $db = \Config\Database::connect();
 
-        $data['payment_fk_id'] = $this->paymentRepo->insert(new Payment_details($payment));
-        if (empty($data)) {
-            $member =  $this->repository->deleteOfId(['id' => $res]);
-        } else {
+        $db->transStart();
+$paymentId = $this->paymentRepo->insert(new Payment_details($payment));
+$this->db->transComplete();
+
+if ($this->db->transStatus() === FALSE) {
+    die('Payment insert failed!');
+}
+
+        print_r($razorpayOrderId);
+        return;
             return view('pages/payment', ['data' => $data, 'json' => $json]);
-        }
     }
 
     public function webLogin()
