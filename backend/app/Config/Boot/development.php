@@ -34,7 +34,7 @@ defined('CI_DEBUG') || define('CI_DEBUG', true);
 define('DB_HOST', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('MASTER_DB_NAME', 'iaoi_prod');
+define('MASTER_DB_NAME', 'registration');
 define('MAIL_HOST', 'vps.agoo.in');
 define('MAIL_USER', 'noreplay@iaoi.in');
 define('MAIL_FROM_USER_NAME', 'IAOI');
