@@ -71,7 +71,6 @@ class Member_requestController extends BaseController
             $data = $this->repository->findAll();
         } else {
             $data = $this->repository->findById($id);
-            $data['payment']=$this->paymentRepo->findAllByWhere(['mem_req_fk_id'=>$data['id']])[0]??[];
         }
         return $this->message(200, $data);
     }
