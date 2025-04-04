@@ -99,24 +99,14 @@ class Become_a_member extends BaseController
         $json = json_encode($data);
 
         $payment = [
-            // 'mem_req_fk_id'    => $res,
+            'mem_req_fk_id'    => $res,
             'payment_mode_fk_id' => 1,
             'amount'             => $price,
             'transaction_id'   => generateKey('PAYMENT'),
             'razorpayorder_id' => $razorpayOrderId
         ];
-        $db = \Config\Database::connect();
-
-        $db->transStart();
-$paymentId = $this->paymentRepo->insert(new Payment_details($payment));
-$this->db->transComplete();
-
-if ($this->db->transStatus() === FALSE) {
-    die('Payment insert failed!');
-}
-
-        print_r($razorpayOrderId);
-        return;
+        
+        $data['payment_fk_id'] = $this->paymentRepo->insert(new Payment_details($payment));
             return view('pages/payment', ['data' => $data, 'json' => $json]);
     }
 
