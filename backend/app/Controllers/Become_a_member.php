@@ -58,8 +58,28 @@ class Become_a_member extends BaseController
     
     public function member_req()
     {
-    
+        $rules = [
+            'name' => 'required',
+            'aadhar_no' => 'required',
+            'present_address' => 'required',
+            'last_office_address' => 'required',
+            'service_details' => 'required',
+            'father_name' => 'required',
+            'mobile_no' => 'required',
+            'permanent_address' => 'required',
+            'current_office_address' => 'required',
+            'certification_no' => 'required'
+        ];
+
+        $validation = \Config\Services::validation();
+
+        if (!$this->validate($rules)) {
+            $errors = $validation->getErrors();
+            return view('include/header') . view('pages/become-a-member', ['errors' => $errors]) ;
+        }
         $req = $this->request->getPost();
+        $req['certification_doc'] = $req ['certification_document_hidden'];
+        $req['profile_img'] = $req ['profile_image_hidden'];
         $res = $this->repository->insert(new Member_request($req));
         $price = 200;
 
@@ -97,26 +117,14 @@ class Become_a_member extends BaseController
         ];
 
         $json = json_encode($data);
-
         $payment = [
-            // 'mem_req_fk_id'    => $res,
+            'mem_req_fk_id'    => $res,
             'payment_mode_fk_id' => 1,
             'amount'             => $price,
             'transaction_id'   => generateKey('PAYMENT'),
             'razorpayorder_id' => $razorpayOrderId
         ];
-        $db = \Config\Database::connect();
-
-        $db->transStart();
-$paymentId = $this->paymentRepo->insert(new Payment_details($payment));
-$this->db->transComplete();
-
-if ($this->db->transStatus() === FALSE) {
-    die('Payment insert failed!');
-}
-
-        print_r($razorpayOrderId);
-        return;
+        $data['payment_fk_id'] = $this->paymentRepo->insert(new Payment_details($payment));
             return view('pages/payment', ['data' => $data, 'json' => $json]);
     }
 

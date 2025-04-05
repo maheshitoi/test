@@ -65,10 +65,10 @@ class MemberController extends BaseController
             $inserted = $this->repository->insert(new Member($reqData));
 
             // Prepare PDF data
-            $pdfData = [
-                'name' => strtoupper($reqData['first_name'].' '.$reqData['last_name']),
-                'member_id' => $reqData['member_id']
-            ];
+            // $pdfData = [
+            //     'name' => strtoupper($reqData['name'].),
+            //     'member_id' => $reqData['member_id']
+            // ];
             $payment_data = [
                 'payemnt_mode_fk_id' => $data['payment_mode_fk_id'],
                 'amount' => $data['amount'],
@@ -79,8 +79,8 @@ class MemberController extends BaseController
             ];
 
             // Generate PDF
-            $pdf = $this->pdfGenerate->genByTemp('member_certificate', $pdfData);
-            $upload_pdf = FCPATH . $pdf;
+            // $pdf = $this->pdfGenerate->genByTemp('member_certificate', $pdfData);
+            // $upload_pdf = FCPATH . $pdf;
 
             // Only if member data is inserted, continue with further steps
             if ($inserted) {
@@ -96,27 +96,26 @@ class MemberController extends BaseController
                     'email_id' => $reqData['email_id'],
                     'mobile_no' => $reqData['mobile_no'],
                     'password' => md5($password),
-                    'fname' => $reqData['first_name'],
-                    'lname' => $reqData['last_name'],
+                    'fname' => $reqData['name'],
                     'member_fk_id' => $reqData['id']
                 ];
                 $this->login_repository->insert(new UserLogin($userlogin));
-                $firstNameLower = strtolower($reqData['first_name']);
-                $lastNameLower = strtolower($reqData['last_name']);
+                // $firstNameLower = strtolower($reqData['first_name']);
+                // $lastNameLower = strtolower($reqData['last_name']);
 
-                if (preg_match('/^dr./', $firstNameLower)) {
-                    $formattedName = ucwords($firstNameLower);
-                } else {
-                    $formattedName = 'Dr. ' . ucwords( $firstNameLower);
-                }
+                // if (preg_match('/^dr./', $firstNameLower)) {
+                //     $formattedName = ucwords($firstNameLower);
+                // } else {
+                //     $formattedName = 'Dr. ' . ucwords( $firstNameLower);
+                // }
 
-                $emailData = [
-                    'first_name' => ucwords($formattedName),
-                    'last_name' => ucwords($lastNameLower),
-                    'username' => $reqData['email_id'],
-                    'password' => $password,
-                ];
-                $this->email->mapWithContent(3, $emailData, true, $reqData['email_id'], $upload_pdf);
+                // $emailData = [
+                //     'first_name' => ucwords($formattedName),
+                //     'last_name' => ucwords($lastNameLower),
+                //     'username' => $reqData['email_id'],
+                //     'password' => $password,
+                // ];
+                // $this->email->mapWithContent(3, $emailData, true, $reqData['email_id'], $upload_pdf);
                 return $this->message(200, $reqData, 'Member data approved');
             }
 

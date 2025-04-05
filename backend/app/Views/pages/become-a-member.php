@@ -29,18 +29,23 @@
                         <input type="text" id="present_address" name="present_address" class="form-control" placeholder="Enter Your Present Address">
                     </div>
                     <div class="form-group">
-                        <label for="last_office_address">Last office Address (if Retired)</label>
-                        <input type="text" id="last_office_address" name="last_office_address" class="form-control" placeholder="Enter Your Last office Address">
+                        <label for="office_designation">Office Designation</label>
+                        <input type="text" id="office_designation" name="office_designation" class="form-control" placeholder="Enter Your Office Designation">
                     </div>
                     <div class="form-group">
                         <label for="service_details">Service Details</label>
-                        <input type="text" id="service_details" name="service_details" class="form-control" placeholder="Enter Your Service Details">
+                        <select id="service_details" name="service_details" class="form-control">
+                            <option value="dentist">I am Working Now</option>
+                            <option value="student">I am Retired Person</option>
+                            <option value="other">I am Student Now</option>
+                            <option value="other">I am an Entrepreneur</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="profile_image">Upload Profile Image</label>
-                        <input type="file" id="profile_image" name="profile_image" class="form-control" accept="image/*" onchange="previewImage(event, 'profile_preview')">
-                        <div id="profile_preview" style="margin-top: 10px;"></div>
-                        <div id="image_error" class="text-danger" style="display: none; margin-top: 5px;">Please Upload Your Certification</div>
+                        <input type="file" id="profile_image" name="profile_image" class="form-control" accept="image/*">
+                        <div id="profile_image_preview" style="margin-top: 10px;"></div>
+                        <div id="profile_image_error" class="text-danger" style="display: none; margin-top: 5px;">Please Upload Your Profile Image</div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -63,21 +68,16 @@
                         <label for="permanent_address">Permanent Address</label>
                         <input type="text" id="permanent_address" name="permanent_address" class="form-control" placeholder="Enter Your Permanent Address">
                     </div>
-
-                    <div class="form-group">
-                        <label for="current_office_address">Current Office Address (Working)</label>
-                        <input type="text" id="current_office_address" name="current_office_address" class="form-control" placeholder="Enter Your Current Office Address">
-                    </div>
                     <div class="form-group">
                         <label for="certification_no">Certification No</label>
                         <input type="text" id="certification_no" name="certification_no" class="form-control" placeholder="Enter Your Certification No">
                     </div>
                     <div class="form-group">
-                        <label for="certification_doc">Certification Image</label>
-                        <input type="file" id="certification_doc" name="certification_doc" class="form-control" accept="image/*" onchange="previewImage(event, 'cert_preview')">
-                        <div id="cert_preview" style="margin-top: 10px;"></div>
+                        <label for="certification_document">Certification Image</label>
+                        <input type="file" id="certification_doc" name="certification_document" class="form-control" accept="image/*">
+                        <div id="certification_doc_preview" style="margin-top: 10px;"></div>
+                        <div id="certification_doc_error" class="text-danger" style="display: none; margin-top: 5px;">Please Upload Your Certification</div>
                     </div>
-
                 </div>
                 <div class="col-12 d-flex justify-content-center my-4">
                     <div style="background: linear-gradient(135deg,rgb(167, 219, 215),rgb(165, 205, 203)); color: #000000; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 400px; text-align: center;">
@@ -128,6 +128,7 @@
         cursor: pointer;
     }
 </style>
+
 <script>
     function submitForm(event) {
         event.preventDefault();
@@ -138,8 +139,9 @@
         const form = document.getElementById("memberForm");
         const inputs = form.querySelectorAll("input, select, textarea");
 
+        // Corrected Profile Image Error ID
         const imageInput = document.getElementById("profile_image");
-        const imageError = document.getElementById("image_error");
+        const imageError = document.getElementById("profile_image_error");
 
         inputs.forEach(input => {
             if ((input.type !== "file" && input.value.trim() === "") ||
@@ -155,7 +157,8 @@
                     input.placeholder = "This field is required";
                 }
 
-                if (input.id === "profile_image") {
+                // Show image error only for #profile_image
+                if (input.id === "profile_image" && imageError) {
                     imageError.style.display = "block";
                 }
 
@@ -165,7 +168,8 @@
 
                 input.classList.remove("placeholder-red");
 
-                if (input.id === "profile_image") {
+                // Hide image error if an image is selected
+                if (input.id === "profile_image" && imageError) {
                     imageError.style.display = "none";
                 }
             }
@@ -178,32 +182,7 @@
         }
     }
 
-    // Image preview for multiple inputs
-    function previewImage(event, previewId) {
-        const previewContainer = document.getElementById(previewId);
-        previewContainer.innerHTML = ""; // Clear previous preview
-
-        const input = event.target;
-        const file = input.files[0];
-
-        if (file && file.type.startsWith("image/")) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.style.maxWidth = "150px";
-                img.style.maxHeight = "150px";
-                img.style.borderRadius = "8px";
-                img.style.border = "1px solid #a4a4a4";
-                previewContainer.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewContainer.innerHTML = "<p class='text-danger'>Invalid image file</p>";
-        }
-    }
-
-    // Green border on input/change
+    // Green border on typing/selecting
     window.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById("memberForm");
         const inputs = form.querySelectorAll("input, select, textarea");
@@ -226,11 +205,74 @@
         });
     });
 
-    // Show date picker on focus
     document.addEventListener('DOMContentLoaded', function() {
+
+        // Date of Birth Picker Fallback
         const dobInput = document.getElementById('dob');
-        dobInput && dobInput.addEventListener('focus', function() {
-            this.showPicker && this.showPicker();
+        if (dobInput) {
+            dobInput.addEventListener('focus', function() {
+                if (this.showPicker) {
+                    this.showPicker();
+                } else {
+                    this.type = 'date';
+                }
+            });
+        }
+    });
+
+    const baseURL = "<?php echo BASEURL; ?>";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all file input fields that accept images
+        document.querySelectorAll('input[type="file"][accept="image/*"]').forEach(input => {
+            input.addEventListener("change", async (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('files', file);
+
+                try {
+                    const response = await fetch(`${baseURL}/api/v1/uploadFile`, {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    const result = await response.json();
+                    console.log("Upload Response:", result); // Debugging
+
+                    if (response.ok && result.statusCode === 200 && result.result) {
+                        const imageUrl = result.result.file_path;
+
+                        // Set hidden input value for file name (if needed)
+                        let hiddenInput = document.getElementById(input.id + "_hidden");
+                        if (!hiddenInput) {
+                            hiddenInput = document.createElement("input");
+                            hiddenInput.type = "hidden";
+                            hiddenInput.id = input.id + "_hidden";
+                            hiddenInput.name = input.name + "_hidden";
+                            input.parentElement.appendChild(hiddenInput);
+                        }
+                        hiddenInput.value = result.result.file_name;
+
+                        // Display Image Preview
+                        let previewContainer = document.getElementById(input.id + "_preview");
+                        if (previewContainer) {
+                            previewContainer.innerHTML = ''; // Clear previous preview
+                            let imgElement = document.createElement('img');
+                            imgElement.src = imageUrl;
+                            imgElement.alt = "Uploaded Image";
+                            imgElement.className = "img-thumbnail";
+                            imgElement.style.maxWidth = "150px";
+                            previewContainer.appendChild(imgElement);
+                        }
+                    } else {
+                        console.error("Upload Error:", result);
+                    }
+                } catch (error) {
+                    console.error('Fetch Error:', error);
+                }
+            });
         });
     });
 </script>

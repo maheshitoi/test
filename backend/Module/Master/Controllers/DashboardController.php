@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-use App\Infrastructure\Persistence\Events\SQLEventRepository;
 use App\Infrastructure\Persistence\Member\SQLMember_requestRepository;
 use App\Infrastructure\Persistence\Member\SQLMemberRepository;
 use Core\Models\Utility\UtilityModel;
@@ -14,7 +13,6 @@ class DashboardController extends BaseController
     private $utility_repo;
     private $member_req;
     private $member;
-    private$event;
 
     public function __construct()
     {
@@ -22,7 +20,6 @@ class DashboardController extends BaseController
         $this->utility_repo         = new UtilityModel();
         $this->member_req = new SQLMember_requestRepository();
         $this->member  =new SQLMemberRepository();
-        $this->event = new SQLEventRepository();
     }
 
     public function index()
@@ -34,8 +31,6 @@ class DashboardController extends BaseController
     {
         $data['total_members'] = count($this->member->findAll());
         $data['total_member_request'] = count($this->member_req->findAll());
-        $data['active_events'] = count($this->event->findAllByWhere(['status'=> 1]));
-        $data['inactive_events'] = count($this->event->findAllByWhere(['status'=> 0]));
         return $this->message(200, $data);
 
     }
