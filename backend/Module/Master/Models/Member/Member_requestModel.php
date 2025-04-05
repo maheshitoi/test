@@ -18,7 +18,7 @@ class Member_requestModel extends Model
     protected $primaryKey = 'id';
     protected $returnType = 'App\Domain\Member\Member_request';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['name', 'father_name', 'email_id','mobile_no', 'permanent_address', 'present_address', 'current_office_address', 'last_office_address', 'aadhar_no', 'certification_no', 'dob', 'certification_doc ', 'status', 'profile_img','mail_on'];
+    protected $allowedFields = ['name', 'father_name', 'email_id','mobile_no', 'permanent_address', 'present_address', 'office_designation', 'aadhar_no', 'certification_no', 'dob', 'certification_doc ', 'status', 'profile_img','mail_on'];
     protected $useTimestamps = true;
     protected $beforeInsert = ['beforeSave'];
     protected $beforeUpdate = ['beforeSave'];

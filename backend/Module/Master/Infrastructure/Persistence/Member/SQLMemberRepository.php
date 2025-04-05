@@ -29,14 +29,14 @@ class SQLMemberRepository implements MemberRepository
         $this->model->builder()
             ->groupStart()
             ->like('member.member_id', $terms, 'both')
-            ->orLike('member.first_name', $terms, 'both')
+            ->orLike('member.name', $terms, 'both')
             ->groupEnd();
         $this->setWhere($whereField);
         return $this->model->asArray()->allowCallbacks(true)->findAll(10);
     }
     function globalJoin()
     {
-        $this->model->select("member.*,CONCAT(IFNULL(CONCAT('',member.first_name,' '),''),member.last_name) AS fullName");
+        $this->model->select("member.*");
     }
     public function findAllPagination($ftbl, $isActive = true)
     {
