@@ -12,7 +12,7 @@ class UserLoginModel extends Model
     {
         helper('Core\Helpers\File');
         $this->appConstant = new \Config\AppConstant();
-        $this->imageColum = array('profile_img' => $this->appConstant->memberprofileImgPath);
+        $this->imageColum = array('profile_img' => $this->appConstant->memberProfileImgPath);
     }
     protected $primaryKey     = 'user_id';
     protected $table          = 'user_login';

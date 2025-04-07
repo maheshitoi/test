@@ -12,13 +12,15 @@ class Member_requestModel extends Model
     {
         helper('Core\Helpers\File');
         $this->appConstant = new \Config\AppConstant();
-        $this->imageColum = array('profile_img' => $this->appConstant->memberprofileImgPath);
+        $this->imageColum = array(
+            'profile_img' => $this->appConstant->memberProfileImgPath,
+            'certification_doc' => $this->appConstant->certificationDocPath);
     }
     protected $table      = 'member_request';
     protected $primaryKey = 'id';
     protected $returnType = 'App\Domain\Member\Member_request';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['name', 'father_name', 'email_id','mobile_no', 'permanent_address', 'present_address', 'office_designation', 'aadhar_no', 'certification_no', 'dob', 'certification_doc ', 'status', 'profile_img','mail_on'];
+    protected $allowedFields = ['name', 'father_name', 'email_id','mobile_no', 'permanent_address', 'present_address', 'office_designation', 'aadhar_no', 'certification_no', 'dob', 'certification_doc', 'status', 'profile_img','mail_on'];
     protected $useTimestamps = true;
     protected $beforeInsert = ['beforeSave'];
     protected $beforeUpdate = ['beforeSave'];
@@ -30,7 +32,7 @@ class Member_requestModel extends Model
         $data['data'] = modelFileHandler($data['data'], $this->imageColum);
         return $data;
     }
-    protected function addImageRealPath(array $data)
+    protected function addImageRealPath(array $data)    
     {
         $data['data'] = addImageRealPath($data['data'], $this->imageColum);
         return $data;

@@ -12,8 +12,11 @@ class MemberModel extends Model
     {
         helper('Core\Helpers\File');
         $this->appConstant = new \Config\AppConstant();
-        $this->imageColum = array('profile_img' => $this->appConstant->memberprofileImgPath);
-        $this->imageColum = array('certification_doc' => $this->appConstant->certificationDocPath);
+        $this->imageColum = array(
+            'profile_img' => $this->appConstant->memberProfileImgPath,
+            'certification_doc' => $this->appConstant->certificationDocPath
+        );
+        
     }
     protected $table      = 'member';
     protected $primaryKey = 'id';

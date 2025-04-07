@@ -26,7 +26,9 @@ class SQLPayment_detailsRepository implements Payment_detailsRepository
 
     function globalJoin(): void {
         $this->model->select(
-            'payment_details.*');
+            'payment_details.*, pm.payment_modeName as paymentModeName, mr.name, mr.email_id, mr.mobile_no',false)
+            ->join('payment_mode as pm', 'pm.id = payment_details.payment_mode_fk_id','left')
+            ->join('member_request as mr', 'mr.id = payment_details.mem_req_fk_id','left');
     }
     public function findAllPagination($ftbl, $isActive = true) {
         $this->globalJoin();

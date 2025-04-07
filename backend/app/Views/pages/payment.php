@@ -15,9 +15,9 @@
             "key": "<?php echo $data['key']; ?>",
             "amount": "<?php echo $data['amount']; ?>", 
             "currency": "INR",
-            "name": "IAOI",
+            "name": "",
             "description": "Test Transaction",
-            "image": "<?php echo BASEURL ?>assets/img/IAOI_Logo_PNG.png",
+            "image": "",
             "order_id": "<?php echo $data['order_id']; ?>", 
             "callback_url": "<?php echo BASEURL . '/verifyPayment'; ?>",
             "prefill": {
@@ -26,7 +26,7 @@
                 "contact": "<?php echo $data['prefill']['mobile_no']; ?>"
             },
             "notes": {
-                "address": "IAOI",
+                "address": "",
                 "payment_fk_id": "<?php echo $data['payment_fk_id']; ?>"
             },
             "theme": {

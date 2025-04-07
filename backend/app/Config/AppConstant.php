@@ -19,7 +19,7 @@ class AppConstant extends BaseConfig
 	public $speaker_profilePath = 'uploads/speaker/';
 	public $eventMultiImgPath = 'uploads/event/';
 	public $bookImgPath = 'uploads/book/img';
-	public $memberprofileImgPath = 'uploads/member/profile';
+	public $memberProfileImgPath = 'uploads/member/profile';
 	public $certificationDocPath = 'uploads/member/certification';
 	public $paymentDocument = 'uploads/payment/doc';
 	public $uploadPath = 'uploads/';

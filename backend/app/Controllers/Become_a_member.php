@@ -58,16 +58,27 @@ class Become_a_member extends BaseController
     
     public function member_req()
     {
+        
         $rules = [
-            'name' => 'required',
-            'aadhar_no' => 'required',
+            'name'            => 'required',
+            'aadhar_no'       => 'required',
             'present_address' => 'required',
-            'last_office_address' => 'required',
             'service_details' => 'required',
-            'father_name' => 'required',
-            'mobile_no' => 'required',
+            'father_name'     => 'required',
+            'email_id'        => [
+                'rules' => 'required|is_unique[member_request.email_id]',
+                'errors' => [
+                    'is_unique' => 'The Email Id is Already Exists'
+                ],
+            ],
+            'mobile_no'       => [
+                'rules' => 'required|is_unique[member_request.mobile_no]',
+                'errors' => [
+                    'is_unique' => 'The Mobile Number is Already Exists'
+                ],
+            ],
             'permanent_address' => 'required',
-            'current_office_address' => 'required',
+            'office_designation' => 'required',
             'certification_no' => 'required'
         ];
 
@@ -75,7 +86,11 @@ class Become_a_member extends BaseController
 
         if (!$this->validate($rules)) {
             $errors = $validation->getErrors();
-            return view('include/header') . view('pages/become-a-member', ['errors' => $errors]) ;
+            return view('include/header') . view('pages/become-a-member', [
+                'errors' => $errors,
+                'hasErrors' => true
+            ]);
+            
         }
         $req = $this->request->getPost();
         $req['certification_doc'] = $req ['certification_document_hidden'];
@@ -98,7 +113,7 @@ class Become_a_member extends BaseController
         $data = [
             "key"         => $this->appConstant->KEY_ID,
             "amount"      => $price * 100,
-            "name"        => "IAOI",
+            "name"        => "",
             "description" => "dummy",
             "image"       => "https://s29.postimg.org/r6dj1g85z/daft_punk.jpg",
             "prefill"     => [
@@ -122,6 +137,7 @@ class Become_a_member extends BaseController
             'payment_mode_fk_id' => 1,
             'amount'             => $price,
             'transaction_id'   => generateKey('PAYMENT'),
+            'transaction_date' => date('Y-m-d'),
             'razorpayorder_id' => $razorpayOrderId
         ];
         $data['payment_fk_id'] = $this->paymentRepo->insert(new Payment_details($payment));
