@@ -56,8 +56,9 @@
                         <div class="form-group">
                             <label for="email_id">Email</label>
                             <input type="email" id="email_id" name="email_id" class="form-control" placeholder="Enter Your Email Id">
-                            <div id="email_error" class="text-danger" style="display: none;padding: 10px 0;">Please enter a valid email address.
-                            </div>
+                            <?php if (isset($errors['email_id'])): ?>
+                                <div class="text-danger" style="font-size: 14px;"><?= $errors['email_id']; ?></div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="form-group">
@@ -73,6 +74,9 @@
                                 <input type="tel" id="mobile_no_input" name="mobile_no_input" class="form-control" placeholder="Enter Your Mobile No">
                             </div>
                             <input type="hidden" id="mobile_no" name="mobile_no">
+                            <?php if (isset($errors['mobile_no'])): ?>
+                                <div class="text-danger" style="font-size: 14px;"><?= $errors['mobile_no']; ?></div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="form-group">
@@ -106,34 +110,6 @@
                     </div>
                 </div>
             </form>
-            <?php if (isset($errors['email_id']) || isset($errors['mobile_no'])): ?>
-                <!-- Duplicate Entry Modal -->
-                <div class="modal fade" id="duplicateEntryModal" tabindex="-1" aria-labelledby="duplicateEntryModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" style="border-radius: 16px; width: 420px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-                            <div class="modal-header" style="background-color: #3AAFA9; color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
-                                <h5 class="modal-title" id="duplicateEntryModalLabel" style="display: flex; align-items: center; gap: 10px;">
-                                    <i class="fa fa-exclamation-triangle"></i> Duplicate Entry Detected
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
-                            </div>
-                            <div class="modal-body" style="padding: 20px; font-size: 15px; color: #333;">
-                                <?php if (isset($errors['email_id'])): ?>
-                                    <p><?= $errors['email_id']; ?></p>
-                                <?php endif; ?>
-                                <?php if (isset($errors['mobile_no'])): ?>
-                                    <p><?= $errors['mobile_no']; ?></p>
-                                <?php endif; ?>
-                            </div>
-                            <div class="modal-footer" style="border-top: 1px solid #e5e5e5; padding: 12px 20px;">
-                                <a href="<?php echo BASEURL ?>become-a-member">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="padding: 8px 18px; border-radius: 6px;color: black;background-color: #3AAFA9;">OK</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
         </div>
     </section>
 
@@ -325,6 +301,52 @@
                     }
                 });
             });
+        });
+
+        // Save input to localStorage on input/change
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("memberForm");
+            const inputs = form.querySelectorAll("input, select, textarea");
+
+            inputs.forEach(input => {
+                const key = "form_" + input.name;
+
+                // Restore saved value on load
+                const savedValue = localStorage.getItem(key);
+                if (savedValue) {
+                    if (input.type === "file") return; // skip file inputs
+                    input.value = savedValue;
+                    if (input.id === "mobile_no_input") {
+                        const countryCode = document.getElementById("country_code").value;
+                        document.getElementById("mobile_no").value = countryCode + savedValue;
+                    }
+                }
+
+                // Save to localStorage on change
+                input.addEventListener("input", () => {
+                    if (input.type !== "file") {
+                        localStorage.setItem(key, input.value);
+                    }
+                });
+
+                input.addEventListener("change", () => {
+                    if (input.type !== "file") {
+                        localStorage.setItem(key, input.value);
+                    }
+                });
+            });
+
+            // Save country code change (for mobile number)
+            const countryCode = document.getElementById("country_code");
+            if (countryCode) {
+                const key = "form_country_code";
+                const saved = localStorage.getItem(key);
+                if (saved) countryCode.value = saved;
+
+                countryCode.addEventListener("change", () => {
+                    localStorage.setItem(key, countryCode.value);
+                });
+            }
         });
     </script>
 

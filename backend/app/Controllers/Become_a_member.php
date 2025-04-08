@@ -68,13 +68,13 @@ class Become_a_member extends BaseController
             'email_id'        => [
                 'rules' => 'required|is_unique[member_request.email_id]',
                 'errors' => [
-                    'is_unique' => 'The Email Id is Already Exists'
+                    'is_unique' => 'The Email Id Should be Unique'
                 ],
             ],
             'mobile_no'       => [
                 'rules' => 'required|is_unique[member_request.mobile_no]',
                 'errors' => [
-                    'is_unique' => 'The Mobile Number is Already Exists'
+                    'is_unique' => 'The Mobile Number Should be Unique'
                 ],
             ],
             'permanent_address' => 'required',
